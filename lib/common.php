@@ -3,10 +3,12 @@
 namespace ResponsiveImageUpsizer\Common;
 
 class Common{
-    public $version = 01;
-    public $slug = 'responsive-image-upsizer';
+
+    public $version, $slug, $settings;
 
     function __construct(){
-        // wp_die('coommon');
+        $this->version = 01;
+        $this->slug = 'responsive-image-upsizer';
+        $this->settings = get_option($this->slug);
     }
 }
