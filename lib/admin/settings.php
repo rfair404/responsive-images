@@ -7,7 +7,7 @@ class Settings{
     function __construct(){
         $this->common = new Common;
         /** @TODO do what you're going to do with settings here */
-        echo var_dump($this->common);
+//        echo var_dump($this->common);
     }
 
 }
