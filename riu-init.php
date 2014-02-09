@@ -1,13 +1,14 @@
 <?php
 
 namespace ResponsiveImageUpsizer;
-use ResponsiveImageUpsizer\Admin\Media;
+use ResponsiveImageUpsizer\Admin\Settings as AdminSettings;
+use ResponsiveImageUpsizer\Admin\Media as AdminMedia;
+use ResponsiveImageUpsizer\Frontend\Display as FrontendDisplay;
 
 class Init{
 
     function __construct(){
         add_action( 'plugins_loaded', array( $this, 'load' ) );
-        // add_action( 'init', array( $this, 'initialize' ) );
     }
     /**
     * Loads the plugin classes
@@ -16,20 +17,20 @@ class Init{
     */
     function load(){
         //load the "common" files first
-        // require_once( 'common.php' );
+        require_once( 'lib/common.php' );
 
         //load the administrative only functions
         if( is_admin() ){
-             require_once( 'lib/admin.php' );
-             echo var_dump(class_exists('ResponsiveImageUpsizer\Admin\Media'));
+            require_once( 'lib/admin/settings.php' );
+            new AdminSettings();
+            require_once( 'lib/admin/media.php' );
+            new AdminMedia();
         }
 
         //load the "non admin" files
         if( !is_admin() ){
-            // require_once( 'lib/frontend.php' );
+            require_once( 'lib/frontend/display.php' );
+            new FrontendDisplay();
         }
     }
-
 }
-
-

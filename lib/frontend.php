@@ -2,6 +2,6 @@
 
 namespace ResponsiveImageUpsizer\Frontend\Frontend;
 
-class Frontend{
+class Display{
 
 }

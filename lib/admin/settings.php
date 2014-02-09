@@ -2,8 +2,8 @@
 
 namespace ResponsiveImageUpsizer\Admin;
 
-class Media{
+class Settings{
     function __construct(){
-        // wp_die('admin');
+        /** @TODO do what you're going to do with settings here */
     }
 }
