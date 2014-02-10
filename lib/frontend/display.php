@@ -51,7 +51,7 @@ class Display{
     */
     function get_image_details( $images = array() ){
        $image_details = array_map( array( $this, 'get_all_image_sizes' ), $images);
-       return $image_details;
+       return array_values($image_details);
     }
     /**
     * Maps all available image sizes to the array of found images
@@ -59,10 +59,10 @@ class Display{
     function get_all_image_sizes( $image = false ){
 
         $sizes = apply_filters( $this->common->slug . '-sizes' , array() );
-        $image_sizes = array();
-
+        $image_sizes = array('id' => $image);
+//        $image_sizes['id'] = $image;
         foreach ($sizes as $size => $size_attributes ){
-            $image_sizes[$image][$size] = wp_get_attachment_image_src( $image , $size );
+            $image_sizes[$size] = wp_get_attachment_image_src( $image , $size )[0];
         }
         return $image_sizes;
     }

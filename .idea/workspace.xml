@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cae6121-5ab9-46ae-a8ec-ef0fc5a8457e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/admin/settings.php" afterPath="$PROJECT_DIR$/lib/admin/settings.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/common.php" afterPath="$PROJECT_DIR$/lib/common.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/frontend/display.php" afterPath="$PROJECT_DIR$/lib/frontend/display.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/js/resizer.js" afterPath="$PROJECT_DIR$/lib/js/resizer.js" />
     </list>
@@ -38,7 +38,7 @@
       <file leaf-file-name="common.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/common.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="28" selection-start="742" selection-end="757" vertical-scroll-proportion="0.0">
+            <state line="23" column="26" selection-start="742" selection-end="757" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -65,7 +65,7 @@
       <file leaf-file-name="display.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/frontend/display.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="44" selection-start="2472" selection-end="2472" vertical-scroll-proportion="0.0">
+            <state line="64" column="24" selection-start="2518" selection-end="2518" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -74,7 +74,7 @@
       <file leaf-file-name="resizer.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/js/resizer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="47" selection-start="422" selection-end="422" vertical-scroll-proportion="0.3708791">
+            <state line="49" column="44" selection-start="1272" selection-end="1272" vertical-scroll-proportion="0.64972526">
               <folding />
             </state>
           </provider>
@@ -406,14 +406,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="28" selection-start="742" selection-end="757" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/frontend/display.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="44" selection-start="2472" selection-end="2472" vertical-scroll-proportion="0.0">
+        <state line="23" column="26" selection-start="742" selection-end="757" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -425,9 +418,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/frontend/display.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="24" selection-start="2518" selection-end="2518" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/js/resizer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="47" selection-start="422" selection-end="422" vertical-scroll-proportion="0.3708791">
+        <state line="49" column="44" selection-start="1272" selection-end="1272" vertical-scroll-proportion="0.64972526">
           <folding />
         </state>
       </provider>
