@@ -77,7 +77,8 @@ class Display{
         $sizes = apply_filters( $this->common->slug . '-sizes' , array() );
         $image_sizes = array('id' => $image);
         foreach ($sizes as $size => $size_attributes ){
-            $image_sizes[$size] = wp_get_attachment_image_src( $image , $size )[0];
+            $img_size = wp_get_attachment_image_src( $image , $size );
+            $image_sizes[$size] = $img_size[0];
         }
         return $image_sizes;
     }
