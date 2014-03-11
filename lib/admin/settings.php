@@ -66,6 +66,13 @@ class Settings{
 		    		 $this->common->slug, 		// The page
 		    		 'responsive_image_option'   // Section
 			);
+		add_settings_field(
+			 	'orientation',	// ID
+		     		 __('Flip the responsive cropping height and width values.', 'responsive-images'),	// label
+		    		 array($this, '_orientation_flip'),   // callback
+		    		 $this->common->slug, 		// The page
+		    		 'responsive_image_option'   // Section
+			);
 
 
 	}
@@ -101,6 +108,12 @@ class Settings{
 	       printf(
 	            ' $( ". <input type="text" id="selector_name" name="responsive_images_option[selector_name]" value="%s" />"); ',
 	            isset( $this->options['selector_name'] ) ? esc_attr( $this->options['selector_name']) : ''
+	        );
+	}
+	function _orientation_flip() {
+	        printf(
+	            ' <input type="checkbox" id="orientation" name="responsive_images_option[orientation]" value="1" %s /> ',
+	            checked(1, $this->options['orientation'], false )
 	        );
 	}
 
