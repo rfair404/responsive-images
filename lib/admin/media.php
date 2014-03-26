@@ -4,9 +4,11 @@ namespace ResponsiveImageUpsizer\Admin;
 use ResponsiveImageUpsizer\Common\Common as Common;
 
 class Media{
+    private $options;
+
     function __construct(){
         $this->common = new Common;
-        /** @TODO do what you're going to do with media here */
+
         add_action( 'init', array( $this, 'add_image_sizes' ) );
     }
 
@@ -18,9 +20,19 @@ class Media{
     function add_image_sizes(){
         $sizes = apply_filters( $this->common->slug . '-sizes' , array() );
 
+        $this->options = get_option('responsive_images_option');
+                        // var_dump($this->options);
+
         if( $sizes && is_array( $sizes ) ){
             foreach ($sizes as $size => $attributes ){
+                if ($this->options['orientation'] == 1) {
+                    $attributes['height'] = $attributes['width'];
+                    unset($attributes['width']);
+                    // var_dump($attributes);
+                add_image_size( $size, 9999, $attributes['height']);
+                } else {
                 add_image_size( $size , $attributes['width'], 9999 );
+                }
             }
         }
     }

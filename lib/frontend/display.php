@@ -5,6 +5,8 @@ use ResponsiveImageUpsizer\Common\Common as Common;
 
 class Display{
 
+    private $options;
+
     public $images, $counter;
     /** constructs the class */
     function __construct(){
@@ -46,8 +48,12 @@ class Display{
      * @return array the merged array including selector images and sizes
      */
     function js_options( $opts = array() ){
+        $this->options = get_option( 'responsive_images_option');
+        $orient = ($this->options['orientation'] == 1) ? true : false;
         $defaults = array(
-            'selector' => $this->common->slug,
+            'selector' => $this->options['selector_name'],
+            'selector_crop_mask' =>$this->options['selector_mask'],
+            'selector_orientation' => $orient,
             'images' => apply_filters($this->common->slug . '-image-sizes', $this->images ),
             'sizes' => apply_filters( $this->common->slug . '-sizes', array() ),
         );
