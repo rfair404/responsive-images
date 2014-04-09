@@ -31,8 +31,9 @@ class Common{
             'responsive-size2' => array( 'width' => 220, ),
             'responsive-size3' => array( 'width' => 320, ),
             'responsive-size4' => array( 'width' => 640, ),
-            'responsive-size5' => array( 'width' => 980, ),
-            'responsive-size6' => array( 'width' => 1600, ),
+            'responsive-size5' => array( 'width' => 770, ),
+            'responsive-size6' => array( 'width' => 980, ),
+            'responsive-size7' => array( 'width' => 1600, ),
         );
         return wp_parse_args( $sizes, $default_sizes );
     }
