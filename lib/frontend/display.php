@@ -1,5 +1,4 @@
 <?php
-
 namespace ResponsiveImageUpsizer\Frontend;
 use ResponsiveImageUpsizer\Common\Common as Common;
 
@@ -19,6 +18,81 @@ class Display{
         add_filter( $this->common->slug . '-js-options', array( $this, 'js_options' ) );
         add_filter( $this->common->slug . '-image-sizes', array( $this, 'get_image_details' ) );
         add_filter( 'wp_get_attachment_image_attributes', array( $this, 'thumbnail_class' ), 2, 15 );
+        add_filter( 'the_post_thumbnail', array( $this, 'default_load_img') );
+    }
+
+
+    /**
+     *  Some Jenk script which goes hambone on the HTTP_USER_AGENT to find out what type of device is scoping out our site. 
+     * @since 0.2.0
+     * @author SCNEPTUNE
+     */
+    function get_user_agent ( $type = NULL ) {
+        $user_agent = strtolower ( $_SERVER['HTTP_USER_AGENT'] );
+        if ( $type == 'bot' ) {
+            // matches popular bots
+            if ( preg_match ( "/googlebot|adsbot|yahooseeker|yahoobot|msnbot|watchmouse|pingdom\.com|feedfetcher-google/", $user_agent ) ) {
+                return true;
+                // watchmouse|pingdom\.com are "uptime services"
+            }
+        } else if ( $type == 'browser' ) {
+            // matches core browser types
+            if ( preg_match ( "/mozilla\/|opera\//", $user_agent ) ) {
+                return true;
+            }
+        } else if ( $type == 'mobile' ) {
+            // matches popular mobile devices that have small screens and/or touch inputs
+            // mobile devices have regional trends; some of these will have varying popularity in Europe, Asia, and America
+            // detailed demographics are unknown, and South America, the Pacific Islands, and Africa trends might not be represented, here
+            if ( preg_match ( "/phone|iphone|itouch|ipod|symbian|android|htc_|htc-|palmos|blackberry|opera mini|iemobile|windows ce|nokia|fennec|hiptop|kindle|mot |mot-|webos\/|samsung|sonyericsson|^sie-|nintendo/", $user_agent ) ) {
+                // these are the most common
+                return true;
+            } else if ( preg_match ( "/mobile|pda;|avantgo|eudoraweb|minimo|netfront|brew|teleca|lg;|lge |wap;| wap /", $user_agent ) ) {
+                // these are less common, and might not be worth checking
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Use the right size for appropriate user agent.  
+     * Configured for thumbnails first.
+     *  This function will be for setting individual scenarios
+     *  for loading the default image but it needs some love.
+     * @since 0.0.2
+     * @author SCNEPTUNE
+     */
+    function default_load_img ($typeSet = NULL){
+         $browser = $this->get_user_agent('browser');
+         $mobile = $this->get_user_agent('mobile');
+            if ($typeSet == 'article_thumbnail' || $typeSet == NULL) {
+                    if($browser) {
+                        if (is_archive() || is_home()) {
+                            return 'responsive-size1';
+                        } else {
+                            return 'responsive-size4';
+                        }
+                    } else if ($mobile) {
+                        if ( is_archive() || is_home())  {
+                            return 'responsive-base';
+                        } else {
+                            return 'responsive-base3';
+                        }
+                    } else {
+                        return 'responsive-base';
+                    }
+            }
+        //TODO link up precise herobox load sizes that will be universal. 
+        if ( $typeSet == 'herobox_image') {
+             if($browser) {
+                return 'responsive-size7';
+            } else if ($mobile) {
+                return 'responsive-size3';
+            }
+        }
+
+
     }
 
     /**
